@@ -1,0 +1,39 @@
+{
+  "name": "sama_school",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/server.js",
+  "scripts": {
+    "test": "tsc && node --env-file=.env.test --test --test-concurrency=1 --test-reporter=spec build/tests/*.test.js",
+    "build": "tsc",
+    "start": "node build/server.js",
+    "dev": "nodemon --watch src --ext ts --exec \"tsc && node build/server.js\"",
+    "db:migrate": "tsc && node --env-file=.env ./node_modules/.bin/sequelize-cli db:migrate --config db.config.js --migrations-path build/migrations",
+    "db:rollback": "tsc && node --env-file=.env ./node_modules/.bin/sequelize-cli db:migrate:undo --config db.config.js --migrations-path build/migrations",
+    "db:seed": "tsc && node --env-file=.env ./node_modules/.bin/sequelize-cli db:seed:all --config db.config.js --seeders-path build/seeders",
+    "db:seed:undo": "tsc && node --env-file=.env ./node_modules/.bin/sequelize-cli db:seed:undo:all --config db.config.js --seeders-path build/seeders"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.6.6",
+    "@types/supertest": "^7.2.1",
+    "nodemon": "^3.1.14",
+    "sequelize-cli": "^6.6.5",
+    "supertest": "^7.3.1",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.3",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.6",
+    "sequelize": "^6.37.8"
+  }
+}
